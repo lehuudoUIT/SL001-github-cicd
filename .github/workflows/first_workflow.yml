@@ -1,0 +1,31 @@
+name: First Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      number:
+        description: "Input a number to check:"
+        required: true
+
+jobs:
+  helloworld:
+    name: "Check if a number is odd or even"
+    defaults:
+      run:
+        shell: bash
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print input number
+        run: echo "The input number is ${{ github.event.inputs.number }}"
+
+      - name: Check is odd or even
+        run: |
+          echo "Checking..."
+          number=${{ github.event.inputs.number }}
+          if [ $((number % 2)) -eq 0 ]; then
+            echo "$number is even"
+          else
+            echo "$number is odd"
+          fi
