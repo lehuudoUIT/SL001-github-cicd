@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 
 app.get("/home", (req, res) => {
   res.status(200);
-  res.send("Welcome to root URL of Server");
+  res.send("Welcome to home page");
 });
 
 app.listen(PORT, (error) => {
