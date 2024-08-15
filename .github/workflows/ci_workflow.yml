@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  test:
+  unit-test:
     name: "Run unit test"
     defaults:
       run:
@@ -28,3 +28,18 @@ jobs:
 
       - name: "Run test script"
         run: ./shell/test.sh
+
+  linting:
+    name: "Run linting project"
+    defaults:
+      run:
+        shell: bash
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Run linting"
+        uses: actions/github-script@v6
+        with:
+          script: |
+            let message = "Linting successfully";
+            console.log(message)
