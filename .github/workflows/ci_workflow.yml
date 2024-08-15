@@ -1,0 +1,24 @@
+name: "CI workflow"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: "Run unit test"
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v2
+
+      - name: "Run test script"
+        run: ./shell/test.sh
